@@ -12,8 +12,17 @@ function PromotionCard({promotion}) {
           <span>{promotion.price}</span>
           
           <footer>
-              <div>Comentário</div>
-              <div>1 Comentário</div>
+              <div>
+                  {promotion.comments.length > 0 && (
+                      <div>
+                          {promotion.comments[0].comment}
+                      </div>
+                  )}
+              </div>
+              <div>
+                  {promotion.comments.length}{' '}
+                  {promotion.comments.length >1 ? 'Comentários' : 'Comentário'}
+              </div>
               <a href={promotion.url}>Ir para o site</a>
           </footer>
           
