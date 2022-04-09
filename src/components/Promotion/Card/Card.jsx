@@ -4,26 +4,26 @@ import card from './card.module.css';
 function PromotionCard({promotion}) {
 
   return (
-    <div className={card.promotion_card}>
-      <img className={card.promotion_card_image} src={promotion.imageUrl} alt="Foto do produto" />
+    <div className={card.promotionCard}>
+      <img className={card.promotionCardImage} src={promotion.imageUrl} alt="Foto do produto" />
       <div>
           
-          <h1>{promotion.title}</h1>
-          <span>{promotion.price}</span>
+          <h1 className={card.promotionCardTitle}>{promotion.title}</h1>
+          <span className={card.promotionCardPrice}>R$ {promotion.price}</span>
           
-          <footer>
-              <div>
+          <footer className={card.promotionCardFooter}>
+              <div className={card.promotionCardComment}>
                   {promotion.comments.length > 0 && (
-                      <div>
-                          {promotion.comments[0].comment}
+                      <div className={card.promotionCardComment}>
+                          "{promotion.comments[0].comment}"
                       </div>
                   )}
               </div>
-              <div>
+              <div className={card.promotionCardCommentsCount}>
                   {promotion.comments.length}{' '}
                   {promotion.comments.length >1 ? 'Comentários' : 'Comentário'}
               </div>
-              <a href={promotion.url}>Ir para o site</a>
+              <a href={promotion.url} target="_blank" className={card.promotionCardLink}>Ir para o site</a>
           </footer>
           
       </div>
