@@ -5,7 +5,7 @@ function PromotionCard({promotion}) {
 
   return (
     <div className={card.promotionCard}>
-      <img className={card.promotionCardImage} src={promotion.imageUrl} alt="Foto do produto" />
+      <img className={card.promotionCardImage} src={promotion.imageUrl} alt="Fone de Ouvido Jaybird Run XT Sport Bluetooth, Cinza" />
       <div>
           
           <h1 className={card.promotionCardTitle}>{promotion.title}</h1>
