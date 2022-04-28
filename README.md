@@ -1,7 +1,9 @@
-# ReactJS
+# Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
+```
+npx create-react-app list-promotions
+```
 ## Available Scripts
 
 In the project directory, you can run:
@@ -14,58 +16,127 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Lista de Promoções
 
-### `npm run build`
+Um listagem de produtos em promoções em ReactJS, utilizando uma API fake com JSON Server
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+## Documentação da API
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+#### Retorna todos os itens
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```http
+  GET /localhost:5000/?_embed=comments
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Instalação
 
-## Learn More
+Crie um diretório:
+```
+mkdir apifake
+cd apifake
+```
+Rode o comando abaixo com o nodejs instalado na máquina
+```
+npm init
+```
+Instale com npm
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+  npm install -g json-server
+```
+Crie um arquivo db.json    
+```
+[
+  {
+    "id": 1,
+    "title": "Kit Notebook Acer Aspire 3 + Mochila Green, A315-41-R790, AMD Ryzen 3 2200U Dual Core",
+    "price": 1799,
+    "imageUrl": "https://m.media-amazon.com/images/I/61o0lt6Sh6L._AC_SL1000_.jpg",
+    "url": "https://www.amazon.com.br/Notebook-Acer-Mochila-A315-41-R790-Mem%C3%B3ria/dp/B07YDWLV7S",
+    "comments": [
+      {
+        "id": 1,
+        "comment": "TELA HD",
+        "promotionId": 1
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Faqueiro Tramontina Laguna Inox - 100 Peças",
+    "price": 246.05,
+    "imageUrl": "https://cdn.gatry.com/gatry-static/promocao/imagem/0324bf9ad81ccbc5a8e22a1a41015649.png",
+    "url": "",
+    "comments": [
+      {
+        "id": 2,
+        "comment": "de R$ 599,90 \n por R$246,05à vista \n (5% de desconto) \n ou R$ 259,00 em 5x de R$ 51,80 sem juros",
+        "promotionId": 2
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Tênis West Coast Marrom",
+    "price": 119.99,
+    "imageUrl": "https://cdn.gatry.com/gatry-static/promocao/imagem/fe0a1e4ddcbd8f9a99a05908b6d29ea2.png",
+    "url": "",
+    "comments": []
+  },
+  {
+    "id": 4,
+    "title": "Fone de Ouvido Jaybird Run XT Sport Bluetooth, Cinza",
+    "price": 699.9,
+    "imageUrl": "https://m.media-amazon.com/images/I/61AcdWphNAL._AC_SL1500_.jpg",
+    "url": "https://www.amazon.com.br/Fones-ouvido-sem-Jaybird-True/dp/B07MSLF5YC",
+    "comments": []
+  }
+]
+```
+Adicione no arquivo package json em scripts:
+```
+"scripts": {
+    "start": "json-server --watch db.json --port 5000 delay=5000"
+  },
+```
+Para rodar a api use o comando:
+```
+npm start
+```
+Aparecerá o seguinte resultado:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+$npm start
 
-### Code Splitting
+> apifake@1.0.0 start
+> json-server --watch db.json --port 5000 delay=5000
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+  \{^_^}/ hi!
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+  Loading db.json
+  Done
 
-### Making a Progressive Web App
+  Resources
+  http://localhost:5000/promotions
+  http://localhost:5000/comments
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+  Home
+  http://localhost:5000
 
-### Advanced Configuration
+  Type s + enter at any time to create a snapshot of the database
+  Watching...
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+GET /promotions?_embed=comments 200 25.777 ms - -
+GET /promotions?_embed=comments 304 19.116 ms - -
 
-### Deployment
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Referência
 
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-
+ - [JSON SERVER](https://www.npmjs.com/package/json-server)
