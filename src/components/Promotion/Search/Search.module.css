@@ -1,0 +1,20 @@
+.promotionSearchHeader{
+    display: flex;
+     justify-content: space-between;
+}
+
+.promotionSearchInput{
+    display: flex;
+     height: 42px;
+      border: 1px solid #CCCCCC;
+       border-radius: 8px;
+        width: 100%;
+         margin-bottom: 20px;
+          padding: 0 10px;
+           font-size: 16px;
+}
+
+.promotionSearchHeader h1{
+    text-transform: uppercase;
+     color: #888888;
+}
