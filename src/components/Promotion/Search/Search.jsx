@@ -3,6 +3,7 @@ import searchCss from "./Search.module.css";
 import axios from 'axios';
 import PromotionCard from '../Card/Card'
 import {Link} from 'react-router-dom'
+import UIButton from 'components/UI/Button/Button'
 
 const PromotionSearch = () =>{
 
@@ -15,7 +16,6 @@ const PromotionSearch = () =>{
         params.title_like = search;
       }
 
-      // console.log(search);
       axios.get('http://localhost:5000/promotions?_embed=comments', {params})
      .then(
         (response) => {
@@ -29,7 +29,7 @@ const PromotionSearch = () =>{
         <>
         <header className={searchCss.promotionSearchHeader}>
           <h1>Promo Show</h1>
-          <Link to="/create">Nova Promoção</Link>
+          <UIButton component={Link} to="/create" theme="contained-success">Nova Promoção</UIButton>
         </header>
 
         <input 

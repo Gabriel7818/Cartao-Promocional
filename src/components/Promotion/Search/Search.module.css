@@ -1,12 +1,14 @@
 .promotionSearchHeader{
     display: flex;
      justify-content: space-between;
+      align-items: center;
+       margin-bottom: 20px;
 }
 
 .promotionSearchInput{
     display: flex;
      height: 42px;
-      border: 1px solid #CCCCCC;
+      border: 2px solid #CCCCCC;
        border-radius: 8px;
         width: 100%;
          margin-bottom: 20px;
