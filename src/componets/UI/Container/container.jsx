@@ -1,10 +1,11 @@
-import react from 'react';
-import container from './Container.module.css'
+import React from 'react';
+import container from './Container.module.css';
 
 function UIContainer({children}){
-    return(
+    return (
         <div className={container.UIContainer}>
             {children}
+
         </div>
     )
 }

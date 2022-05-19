@@ -1,13 +1,13 @@
-import React from 'react';
-import PromotionSearch from '../../../components/Promotion/Search/Search'
-import UIContainer from '../../../components/UI/Container/Container'
-
-const PagesPromotionSearch = () =>{
+import React from "react";
+import PromotionSearch from '../../../componets/Promotion/Search/Search'
+import UIContainer from "../../../componets/UI/Container/container"
+const PagesPromotionSearch = () => {
     return (
         <UIContainer>
-            <PromotionSearch />
+            <PromotionSearch/>
         </UIContainer>
     );
+
 };
 
 export default PagesPromotionSearch;

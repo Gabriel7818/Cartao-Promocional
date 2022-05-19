@@ -1,28 +1,34 @@
-import React, {useState, useEffect} from 'react';
-import PromotionCard from '../../../components/Promotion/Card/Card';
-import axios from 'axios'
+import React,{useState, useEffect} from 'react';
+import PromotionCard from '../../../componets/Promotion/card/Card'
+// import axios from 'axios';
+import api from '../../../service/Api'
+const PagesPromotionlist = () => {
 
-const PagesPromotionList = () =>{
-    const [promotions, setPromotions] = useState([]);
+    
+    const [promotions, setPromotions] =  useState([]);
 
-    useEffect( () => {
-      axios.get('http://localhost:5000/promotions?_embed=comments')
-     .then(
-        (response) => {
+    useEffect(() => {
+      api.get('/promotions?_embed=comments')
+      .then((response) => {
+        console.log(response.data);
         setPromotions(response.data);
+
       }
-    );
+      );
+     }, [])
 
-    }, []);
-
-    return(
+    
+     
+     return(
+        
         <>
-          {promotions.map( (promotions) => (
-            <PromotionCard promotion={promotions} key={promotions.id}/>    
-          ) )}
+          {promotions.map((promotion) =>(
+            <PromotionCard promotion={promotion} key={promotion.id}/>
+           ) )}
+            
         </>
     )
 }
 
-export default PagesPromotionList;
 
+export default PagesPromotionlist;

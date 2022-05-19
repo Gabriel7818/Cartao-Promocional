@@ -1,8 +1,8 @@
-import React, {useEffect,useState} from 'react';
+import React , {useEffect,useState} from 'react';
 import FormCss from './Form.module.css';
 import axios from 'axios';
-import {useNavigate} from 'react-router-dom';
-import UIButton from 'components/UI/Button/Button'
+import { useNavigate, Link } from 'react-router-dom';
+import UIButton from '../../UI/Button/Button';
 
 const initialValue = {
     title: '',
@@ -11,15 +11,18 @@ const initialValue = {
     price: 0,
 }
 
+
+
 const PromotionForm = ({id}) => {
     const[values, setValues] = useState(initialValue);
     const navigate = useNavigate();
     console.log(values);
     function onChange(ev){
         const{name, value} = ev.target;
+
+        // console.log({name, value});
         setValues({...values, [name]: value})
     }
-    
     useEffect( ()=>{
         if(id){
             axios.get(`http://localhost:5000/promotions/${id}`)
@@ -29,6 +32,8 @@ const PromotionForm = ({id}) => {
         }
 
     }, [id])
+
+
 
     function onSubmit(ev){
         ev.preventDefault();
@@ -42,15 +47,22 @@ const PromotionForm = ({id}) => {
           .then( (response) => {
               navigate('/');
           })
-    }
 
+        // ev.preventDefault();
+        // axios.post('http://localhost:5000/promotions/', values)
+        // .then( (response) => {
+        //     navigate('/')
+        // })
+
+
+    }
     return(
         <div>
             <h1>Promo show</h1>
-            <h2>Nova promoção</h2>
+            <h2> Nova promoção</h2>
             <form onSubmit={onSubmit}>
                 <div className={FormCss.PromotionFormGroup}>
-                <label htmlFor="title">Titulo</label>
+                <label htmlFor="title">titulo</label>
                 <input type="text" id="title" name="title" value={values.title} onChange={onChange} />
                 </div>
 
@@ -69,10 +81,22 @@ const PromotionForm = ({id}) => {
                 <input type="number" step="any" id="price" name="price" value={values.price} onChange={onChange} />
                 </div>
 
-                <div>
-                    <UIButton component="button" type="submit">Salvar</UIButton>
-                    <UIButton to="/" component="button" className="contained-warning">Voltar</UIButton>
+                <div className={FormCss.PromotionFormButton}>
+                    <UIButton type="submit" component="button">
+                        Salvar
+                    </UIButton>
+                    <UIButton
+                    to="/"
+                    component={Link}
+                    theme="border-warning"
+                    >
+                        Voltar
+                    </UIButton>
                 </div>
+
+               
+               
+
             </form>
         </div>
     )
