@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from "react";
 import searchCss from './Search.module.css';
-// import axios from 'axios';
 import PromotionCard from '../card/Card';
 import { Link } from "react-router-dom";
 import UIButton from '../../UI/Button/Button';
@@ -9,9 +8,9 @@ import api from '../../../service/Api'
 
 const PromotionSearch = () => { 
         const [promotions, setPromotions] =  useState([]);
-        const[ search, setSearch] = useState('');
-    
-
+        const[search, setSearch] = useState('');
+        const[onDelete, setOnDelete] = useState(null);
+  
          useEffect(() => {
            const params = {};
            if (search) {
@@ -25,13 +24,22 @@ const PromotionSearch = () => {
                   console.log(error);
                 }}
                 getSeach();
+         }, [search, onDelete]);
 
-         }, [search])
+         const handDelete = async (id) => {
+           try{
+             await api.delete(`/promotions/${id}`);
+             setOnDelete(id);
+            } catch (error) {
+               console.log(error);
+             }
+           }
+         
 
           return (
          <>
          <header className={searchCss.PromotionSearchHeader}>
-           <h1> promo show</h1>
+           <h1>promo show</h1>
            <UIButton to= "/create" theme="contained-success" component={Link}>Nova promoção</UIButton>
          </header>
          <input type="search"
@@ -41,7 +49,7 @@ const PromotionSearch = () => {
          onChange={(ev) => setSearch(ev.target.value)}
          />
           {promotions.map((promotion) =>(
-            <PromotionCard promotion={promotion} key={promotion.id}/>
+            <PromotionCard promotion={promotion} key={promotion.id} onClickDelete={() => handDelete(promotion.id)}/>
            ) )}  
          </>
     );

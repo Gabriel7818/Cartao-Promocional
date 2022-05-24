@@ -19,10 +19,9 @@ const PromotionForm = ({id}) => {
     console.log(values);
     function onChange(ev){
         const{name, value} = ev.target;
-
-        // console.log({name, value});
         setValues({...values, [name]: value})
     }
+
     useEffect( ()=>{
         if(id){
             axios.get(`http://localhost:5000/promotions/${id}`)
@@ -48,21 +47,14 @@ const PromotionForm = ({id}) => {
               navigate('/');
           })
 
-        // ev.preventDefault();
-        // axios.post('http://localhost:5000/promotions/', values)
-        // .then( (response) => {
-        //     navigate('/')
-        // })
-
-
     }
     return(
         <div>
             <h1>Promo show</h1>
-            <h2> Nova promoção</h2>
+            <h2>Nova promoção</h2>
             <form onSubmit={onSubmit}>
                 <div className={FormCss.PromotionFormGroup}>
-                <label htmlFor="title">titulo</label>
+                <label htmlFor="title">Titulo</label>
                 <input type="text" id="title" name="title" value={values.title} onChange={onChange} />
                 </div>
 
@@ -93,10 +85,6 @@ const PromotionForm = ({id}) => {
                         Voltar
                     </UIButton>
                 </div>
-
-               
-               
-
             </form>
         </div>
     )
